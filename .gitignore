@@ -1,0 +1,9 @@
+# large / regenerated files
+all_classes_dataset_2048.npz
+results/models/
+test_videos/
+*.mp4
+*.zip
+__pycache__/
+venv/
+.venv/

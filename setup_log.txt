@@ -1,0 +1,70 @@
+===== python =====
+Python 3.14.6
+C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\python.exe
+===== pip install =====
+Requirement already satisfied: scikit-learn in C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (1.9.0)
+Collecting scikit-learn
+  Downloading scikit_learn-1.9.1-cp314-cp314-win_amd64.whl.metadata (9.3 kB)
+Requirement already satisfied: pandas in C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (3.0.5)
+Collecting pandas
+  Downloading pandas-3.1.1-cp314-cp314-win_amd64.whl.metadata (16 kB)
+Requirement already satisfied: matplotlib in C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (3.11.2)
+Requirement already satisfied: joblib in C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (1.5.3)
+Collecting joblib
+  Downloading joblib-1.6.0-py3-none-any.whl.metadata (6.5 kB)
+Collecting opencv-python
+  Downloading opencv_python-5.0.0.93-cp37-abi3-win_amd64.whl.metadata (20 kB)
+Collecting yt-dlp
+  Downloading yt_dlp-2026.10.26-py3-none-any.whl.metadata (183 kB)
+Requirement already satisfied: numpy>=1.24.1 in C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from scikit-learn) (2.5.2)
+Requirement already satisfied: scipy>=1.10.0 in C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from scikit-learn) (1.18.0)
+Requirement already satisfied: narwhals>=2.0.1 in C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from scikit-learn) (2.24.0)
+Requirement already satisfied: threadpoolctl>=3.5.0 in C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from scikit-learn) (3.6.0)
+Requirement already satisfied: python-dateutil>=2.9.0 in C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from pandas) (2.9.0.post0)
+Requirement already satisfied: tzdata in C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from pandas) (2026.3)
+Requirement already satisfied: contourpy>=1.0.1 in C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from matplotlib) (1.4.0)
+Requirement already satisfied: cycler>=0.10 in C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from matplotlib) (0.12.1)
+Requirement already satisfied: fonttools>=4.28.2 in C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from matplotlib) (4.66.1)
+Requirement already satisfied: kiwisolver>=1.3.1 in C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from matplotlib) (1.5.1)
+Requirement already satisfied: packaging>=20.0 in C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from matplotlib) (26.3)
+Requirement already satisfied: pillow>=9 in C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from matplotlib) (12.3.0)
+Requirement already satisfied: pyparsing>=3 in C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from matplotlib) (3.3.3)
+Collecting cloudpickle>=3.0 (from joblib)
+  Downloading cloudpickle-3.1.2-py3-none-any.whl.metadata (7.1 kB)
+Requirement already satisfied: six>=1.5 in C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from python-dateutil>=2.9.0->pandas) (1.17.0)
+Downloading scikit_learn-1.9.1-cp314-cp314-win_amd64.whl (8.4 MB)
+   ---------------------------------------- 8.4/8.4 MB 21.1 MB/s  0:00:00
+Downloading pandas-3.1.1-cp314-cp314-win_amd64.whl (10.9 MB)
+   ---------------------------------------- 10.9/10.9 MB 46.8 MB/s  0:00:00
+Downloading joblib-1.6.0-py3-none-any.whl (306 kB)
+Downloading opencv_python-5.0.0.93-cp37-abi3-win_amd64.whl (44.0 MB)
+   ---------------------------------------- 44.0/44.0 MB 52.4 MB/s  0:00:00
+Downloading yt_dlp-2026.10.26-py3-none-any.whl (3.2 MB)
+   ---------------------------------------- 3.2/3.2 MB 37.5 MB/s  0:00:00
+Downloading cloudpickle-3.1.2-py3-none-any.whl (22 kB)
+Installing collected packages: yt-dlp, opencv-python, cloudpickle, pandas, joblib, scikit-learn
+  WARNING: The script yt-dlp.exe is installed in 'C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  Attempting uninstall: pandas
+    Found existing installation: pandas 3.0.5
+    Uninstalling pandas-3.0.5:
+      Successfully uninstalled pandas-3.0.5
+  Attempting uninstall: joblib
+    Found existing installation: joblib 1.5.3
+    Uninstalling joblib-1.5.3:
+      Successfully uninstalled joblib-1.5.3
+  Attempting uninstall: scikit-learn
+    Found existing installation: scikit-learn 1.9.0
+    Uninstalling scikit-learn-1.9.0:
+      Successfully uninstalled scikit-learn-1.9.0
+
+Successfully installed cloudpickle-3.1.2 joblib-1.6.0 opencv-python-5.0.0.93 pandas-3.1.1 scikit-learn-1.9.1 yt-dlp-2026.10.26
+===== check torch =====
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import torch, torchvision; print('torch', torch.__version__, 'cuda', torch.cuda.is_available())
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'torch'
+===== check sklearn =====
+sklearn 1.9.1 cv2 5.0.0
+===== DONE =====
