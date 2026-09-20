@@ -14,7 +14,8 @@ Models:
 
 Evaluation:
   * 5-fold stratified cross-validation on the whole dataset (mean +- std)
-  * one stratified 80/20 hold-out split -> accuracy, balanced accuracy, macro-F1, ROC-AUC
+  * one stratified 80/20 hold-out split -> classification report + confusion matrix
+  * every model is then refit on ALL data and saved to models/ for test_youtube_video.py
 
 Usage:
   python train_classifiers.py --data all_classes_dataset_2048.npz
@@ -23,13 +24,20 @@ Usage:
 """
 
 import argparse
+import json
+import os
 import time
 
+import joblib
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from sklearn.ensemble import HistGradientBoostingClassifier, RandomForestClassifier
 from sklearn.linear_model import LogisticRegression, Perceptron
-from sklearn.metrics import (accuracy_score, balanced_accuracy_score, f1_score,
+from sklearn.metrics import (accuracy_score, balanced_accuracy_score,
+                             classification_report, confusion_matrix, f1_score,
                              roc_auc_score)
 from sklearn.model_selection import StratifiedKFold, cross_validate, train_test_split
 from sklearn.neural_network import MLPClassifier
@@ -81,10 +89,33 @@ def scores_for_auc(model, X):
     return model.decision_function(X)
 
 
-def run_task(task, X, y, labels, do_cv):
+def plot_cm(cm, labels, title, path):
+    cm_norm = cm.astype(float) / cm.sum(axis=1, keepdims=True).clip(min=1)
+    size = max(5, 0.55 * len(labels) + 2)
+    fig, ax = plt.subplots(figsize=(size, size))
+    ax.imshow(cm_norm, cmap="Blues", vmin=0, vmax=1)
+    ax.set_xticks(range(len(labels)), labels, rotation=60, ha="right", fontsize=8)
+    ax.set_yticks(range(len(labels)), labels, fontsize=8)
+    for i in range(len(labels)):
+        for j in range(len(labels)):
+            if cm[i, j]:
+                ax.text(j, i, cm[i, j], ha="center", va="center", fontsize=7,
+                        color="white" if cm_norm[i, j] > 0.5 else "black")
+    ax.set_xlabel("Predicted")
+    ax.set_ylabel("True")
+    ax.set_title(title, fontsize=10)
+    fig.tight_layout()
+    fig.savefig(path, dpi=130)
+    plt.close(fig)
+
+
+def run_task(task, X, y, labels, out_dir, do_cv):
     print("\n" + "=" * 70)
     print(f"TASK: {task}   samples={len(y)}   classes={len(labels)}")
     print("=" * 70)
+    os.makedirs(os.path.join(out_dir, "confusion_matrices"), exist_ok=True)
+    os.makedirs(os.path.join(out_dir, "reports"), exist_ok=True)
+    os.makedirs(os.path.join(out_dir, "models"), exist_ok=True)
 
     X_tr, X_te, y_tr, y_te = train_test_split(
         X, y, test_size=0.2, stratify=y, random_state=SEED)
@@ -115,6 +146,17 @@ def run_task(task, X, y, labels, do_cv):
         if task == "binary":
             row["holdout_roc_auc"] = roc_auc_score(y_te, scores_for_auc(model, X_te))
 
+        rep = classification_report(y_te, pred, labels=range(len(labels)),
+                                    target_names=labels, digits=3, zero_division=0)
+        with open(os.path.join(out_dir, "reports", f"{task}_{name}.txt"), "w") as f:
+            f.write(f"{task} / {name}  (stratified 80/20 hold-out, seed={SEED})\n\n{rep}")
+        cm = confusion_matrix(y_te, pred, labels=range(len(labels)))
+        plot_cm(cm, labels, f"{task} - {name} (hold-out)",
+                os.path.join(out_dir, "confusion_matrices", f"{task}_{name}.png"))
+
+        # ---- refit on ALL data and save for inference ----
+        model.fit(X, y)
+        joblib.dump(model, os.path.join(out_dir, "models", f"{task}_{name}.joblib"))
 
         row["time_s"] = round(time.time() - t0, 1)
         rows.append(row)
@@ -129,6 +171,7 @@ def run_task(task, X, y, labels, do_cv):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--data", default="all_classes_dataset_2048.npz")
+    ap.add_argument("--out", default="results")
     ap.add_argument("--no-cv", action="store_true", help="skip 5-fold CV (faster)")
     ap.add_argument("--skip", nargs="*", default=[],
                     help="model names to skip, e.g. --skip HistGradientBoosting RandomForest")
@@ -137,19 +180,25 @@ def main():
 
     d = np.load(args.data)
     X, y, classes = d["X"].astype(np.float32), d["y"], list(d["classes"])
+    os.makedirs(args.out, exist_ok=True)
 
     normal_idx = classes.index(NORMAL_CLASS)
     y_bin = (y != normal_idx).astype(int)          # 1 = anomaly
 
     rows = []
-    rows += run_task("binary", X, y_bin, ["Normal", "Anomaly"], not args.no_cv)
-    rows += run_task("multiclass", X, y, classes, not args.no_cv)
+    rows += run_task("binary", X, y_bin, ["Normal", "Anomaly"], args.out, not args.no_cv)
+    rows += run_task("multiclass", X, y, classes, args.out, not args.no_cv)
 
     df = pd.DataFrame(rows)
+    df.to_csv(os.path.join(args.out, "results_summary.csv"), index=False)
+    with open(os.path.join(args.out, "models", "meta.json"), "w") as f:
+        json.dump({"classes": classes, "binary_labels": ["Normal", "Anomaly"],
+                   "normal_class": NORMAL_CLASS, "feature_dim": int(X.shape[1])}, f, indent=2)
 
     print("\n" + "=" * 70 + "\nSUMMARY\n" + "=" * 70)
     with pd.option_context("display.width", 200, "display.precision", 3):
         print(df.drop(columns=[c for c in df.columns if c.endswith("_std")]).to_string(index=False))
+    print(f"\nSaved: {args.out}/results_summary.csv, reports/, confusion_matrices/, models/")
 
 
 if __name__ == "__main__":
