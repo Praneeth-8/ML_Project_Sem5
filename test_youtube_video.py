@@ -1,28 +1,33 @@
 """
 test_youtube_video.py
 ---------------------
-Turn a NEW video (e.g. downloaded from YouTube) into the same 2048-dim vector
-used for training, so it can be classified by the models from train_classifiers.py.
+Classify a NEW video (e.g. downloaded from YouTube) with the models trained by
+train_classifiers.py.
 
 It reproduces the training feature pipeline exactly:
   video -> sample every Nth frame -> resize to 64x64 (UCF-Crime Kaggle frames are 64x64 PNGs)
         -> Resize(256) -> CenterCrop(224) -> ImageNet normalize
         -> DenseNet121 (classifier = Identity) -> 1024-dim per frame
         -> [mean(1024), max(1024)] = 2048-dim video vector
+        -> every saved model predicts Normal/Anomaly and the 14-class label
 
 Download a video first, for example:
     pip install yt-dlp
     yt-dlp -f "mp4[height<=480]" -o test_video.mp4 "<youtube url>"
 
 Run:
-    python test_youtube_video.py --video test_video.mp4
+    python test_youtube_video.py --video test_video.mp4 --models results/models
 
-Requirements: torch, torchvision, opencv-python, numpy, pillow
+Requirements: torch, torchvision, opencv-python, scikit-learn, joblib, numpy, pillow
 """
 
 import argparse
+import glob
+import json
+import os
 
 import cv2
+import joblib
 import torch
 import torch.nn as nn
 from PIL import Image
@@ -88,13 +93,53 @@ def mean_max(frame_feats):
     return torch.cat([f.mean(dim=0), f.max(dim=0)[0]]).numpy()   # (2048,)
 
 
+def load_models(model_dir):
+    out = {"binary": {}, "multiclass": {}}
+    for p in sorted(glob.glob(os.path.join(model_dir, "*.joblib"))):
+        task, name = os.path.basename(p)[:-7].split("_", 1)
+        out[task][name] = joblib.load(p)
+    return out
+
+
+def predict_all(vec, models_by_task, meta):
+    x = vec.reshape(1, -1)
+    results = {}
+    for task, labels in [("binary", meta["binary_labels"]), ("multiclass", meta["classes"])]:
+        results[task] = {}
+        for name, m in models_by_task[task].items():
+            pred = int(m.predict(x)[0])
+            conf = None
+            if hasattr(m, "predict_proba"):
+                conf = float(m.predict_proba(x)[0][pred])
+            results[task][name] = (labels[pred], conf)
+    return results
+
+
+def print_results(results, header):
+    print("\n" + "-" * 62 + f"\n{header}\n" + "-" * 62)
+    for task in ["binary", "multiclass"]:
+        print(f"[{task}]")
+        votes = {}
+        for name, (label, conf) in results[task].items():
+            c = f"{conf:.2f}" if conf is not None else "  - "
+            print(f"   {name:22s} -> {label:14s} (conf {c})")
+            votes[label] = votes.get(label, 0) + 1
+        winner = max(votes, key=votes.get)
+        print(f"   {'MAJORITY VOTE':22s} -> {winner}  ({votes[winner]}/{len(results[task])} models)")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--video", required=True)
+    ap.add_argument("--models", default="results/models")
     ap.add_argument("--every", type=int, default=10, help="keep every Nth frame (dataset used 10)")
     ap.add_argument("--frame-size", type=int, default=64,
                     help="resize frames to this square size before DenseNet (training frames were 64x64; 0 = keep original)")
     args = ap.parse_args()
+
+    with open(os.path.join(args.models, "meta.json")) as f:
+        meta = json.load(f)
+    models_by_task = load_models(args.models)
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Device: {device}")
@@ -106,8 +151,9 @@ def main():
     feats = extract_frame_features(frames, densenet, device)
     print(f"  frame features: {tuple(feats.shape)}")
 
-    vec = mean_max(feats)
-    print(f"  video vector: {vec.shape}  (mean 1024 + max 1024)")
+    # whole video (this is exactly how training videos were represented)
+    print_results(predict_all(mean_max(feats), models_by_task, meta),
+                  f"WHOLE VIDEO  ({frames[0][0]:.1f}s - {frames[-1][0]:.1f}s)")
 
 
 if __name__ == "__main__":
