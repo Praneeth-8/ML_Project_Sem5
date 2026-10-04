@@ -17,6 +17,8 @@ Download a video first, for example:
 
 Run:
     python test_youtube_video.py --video test_video.mp4 --models results/models
+    python test_youtube_video.py --video test_video.mp4 --start 30 --end 75   # only a clip
+    python test_youtube_video.py --video test_video.mp4 --window 10           # per-10s-window predictions
 
 Requirements: torch, torchvision, opencv-python, scikit-learn, joblib, numpy, pillow
 """
@@ -28,6 +30,7 @@ import os
 
 import cv2
 import joblib
+import numpy as np
 import torch
 import torch.nn as nn
 from PIL import Image
@@ -51,7 +54,7 @@ PREPROCESS = transforms.Compose([
 ])
 
 
-def read_frames(path, every_n, frame_size):
+def read_frames(path, every_n, frame_size, start_s, end_s):
     """Returns list of (timestamp_seconds, PIL image) for every Nth frame."""
     cap = cv2.VideoCapture(path)
     if not cap.isOpened():
@@ -66,7 +69,9 @@ def read_frames(path, every_n, frame_size):
         if not ok:
             break
         t = idx / fps
-        if idx % every_n == 0:
+        if end_s is not None and t > end_s:
+            break
+        if t >= start_s and idx % every_n == 0:
             rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             if frame_size > 0:   # match the low-res training frames
                 rgb = cv2.resize(rgb, (frame_size, frame_size), interpolation=cv2.INTER_AREA)
@@ -135,6 +140,10 @@ def main():
     ap.add_argument("--every", type=int, default=10, help="keep every Nth frame (dataset used 10)")
     ap.add_argument("--frame-size", type=int, default=64,
                     help="resize frames to this square size before DenseNet (training frames were 64x64; 0 = keep original)")
+    ap.add_argument("--start", type=float, default=0.0, help="start time (s)")
+    ap.add_argument("--end", type=float, default=None, help="end time (s)")
+    ap.add_argument("--window", type=float, default=0,
+                    help="if >0, also predict on consecutive windows of this many seconds")
     args = ap.parse_args()
 
     with open(os.path.join(args.models, "meta.json")) as f:
@@ -145,15 +154,31 @@ def main():
     print(f"Device: {device}")
     densenet = load_densenet(device)
 
-    frames = read_frames(args.video, args.every, args.frame_size)
+    frames = read_frames(args.video, args.every, args.frame_size, args.start, args.end)
     if not frames:
-        raise SystemExit("No frames sampled.")
+        raise SystemExit("No frames sampled - check --start/--end.")
     feats = extract_frame_features(frames, densenet, device)
     print(f"  frame features: {tuple(feats.shape)}")
 
     # whole video (this is exactly how training videos were represented)
     print_results(predict_all(mean_max(feats), models_by_task, meta),
                   f"WHOLE VIDEO  ({frames[0][0]:.1f}s - {frames[-1][0]:.1f}s)")
+
+    # optional: sliding windows, to see WHERE in a long video the anomaly is
+    if args.window > 0:
+        times = np.array([t for t, _ in frames])
+        t0 = times[0]
+        while t0 <= times[-1]:
+            mask = (times >= t0) & (times < t0 + args.window)
+            if mask.sum() >= 3:
+                res = predict_all(mean_max(feats[torch.from_numpy(mask)]), models_by_task, meta)
+                b = [r[0] for r in res["binary"].values()]
+                m = [r[0] for r in res["multiclass"].values()]
+                b_vote = max(set(b), key=b.count)
+                m_vote = max(set(m), key=m.count)
+                print(f"  window {t0:6.1f}-{t0 + args.window:6.1f}s : {b_vote:8s} "
+                      f"({b.count(b_vote)}/{len(b)})  | {m_vote} ({m.count(m_vote)}/{len(m)})")
+            t0 += args.window
 
 
 if __name__ == "__main__":
