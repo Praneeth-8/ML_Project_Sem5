@@ -1,0 +1,71 @@
+
+======================================================================
+TASK: binary   samples=1610   classes=2
+======================================================================
+  LogisticRegression     hold-out acc=0.826 bal_acc=0.826 f1=0.826 | CV f1=0.830±0.013  (0.6s)
+  LinearSVC              hold-out acc=0.804 bal_acc=0.804 f1=0.804 | CV f1=0.819±0.014  (3.5s)
+  Perceptron             hold-out acc=0.820 bal_acc=0.820 f1=0.820 | CV f1=0.811±0.014  (0.6s)
+  HistGradientBoosting   hold-out acc=0.839 bal_acc=0.838 f1=0.838 | CV f1=0.827±0.020  (888.8s)
+  RandomForest           hold-out acc=0.811 bal_acc=0.811 f1=0.810 | CV f1=0.822±0.016  (10.2s)
+C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\sklearn\svm\_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\sklearn\svm\_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\sklearn\svm\_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\sklearn\svm\_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\sklearn\svm\_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\sklearn\svm\_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\sklearn\svm\_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+  SVM_RBF                hold-out acc=0.860 bal_acc=0.860 f1=0.860 | CV f1=0.864±0.019  (27.5s)
+  MLP                    hold-out acc=0.814 bal_acc=0.814 f1=0.814 | CV f1=0.845±0.011  (15.3s)
+
+======================================================================
+TASK: multiclass   samples=1610   classes=14
+======================================================================
+  LogisticRegression     hold-out acc=0.599 bal_acc=0.327 f1=0.332 | CV f1=0.299±0.027  (7.9s)
+  LinearSVC              hold-out acc=0.578 bal_acc=0.282 f1=0.293 | CV f1=0.265±0.019  (67.0s)
+  Perceptron             hold-out acc=0.519 bal_acc=0.229 f1=0.216 | CV f1=0.231±0.016  (3.8s)
+  HistGradientBoosting   hold-out acc=0.602 bal_acc=0.294 f1=0.318 | CV f1=0.274±0.048  (951.9s)
+  RandomForest           hold-out acc=0.516 bal_acc=0.108 f1=0.108 | CV f1=0.095±0.013  (13.0s)
+C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\sklearn\svm\_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\sklearn\svm\_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\sklearn\svm\_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\sklearn\svm\_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\sklearn\svm\_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\sklearn\svm\_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+C:\Users\N.SAKETH\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\sklearn\svm\_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+  SVM_RBF                hold-out acc=0.618 bal_acc=0.265 f1=0.274 | CV f1=0.279±0.022  (100.8s)
+  MLP                    hold-out acc=0.618 bal_acc=0.284 f1=0.289 | CV f1=0.279±0.025  (17.2s)
+
+======================================================================
+SUMMARY
+======================================================================
+      task                model  cv_acc_mean  cv_bal_acc_mean  cv_f1_macro_mean  holdout_acc  holdout_bal_acc  holdout_f1_macro  holdout_roc_auc  time_s
+    binary   LogisticRegression        0.830            0.830             0.830        0.826            0.826             0.826            0.911     0.6
+    binary            LinearSVC        0.819            0.819             0.819        0.804            0.804             0.804            0.896     3.5
+    binary           Perceptron        0.811            0.811             0.811        0.820            0.820             0.820            0.896     0.6
+    binary HistGradientBoosting        0.827            0.827             0.827        0.839            0.838             0.838            0.898   888.8
+    binary         RandomForest        0.822            0.822             0.822        0.811            0.811             0.810            0.903    10.2
+    binary              SVM_RBF        0.864            0.864             0.864        0.860            0.860             0.860            0.943    27.5
+    binary                  MLP        0.845            0.845             0.845        0.814            0.814             0.814            0.907    15.3
+multiclass   LogisticRegression        0.577            0.302             0.299        0.599            0.327             0.332              NaN     7.9
+multiclass            LinearSVC        0.563            0.267             0.265        0.578            0.282             0.293              NaN    67.0
+multiclass           Perceptron        0.514            0.235             0.231        0.519            0.229             0.216              NaN     3.8
+multiclass HistGradientBoosting        0.590            0.266             0.274        0.602            0.294             0.318              NaN   951.9
+multiclass         RandomForest        0.514            0.099             0.095        0.516            0.108             0.108              NaN    13.0
+multiclass              SVM_RBF        0.630            0.262             0.279        0.618            0.265             0.274              NaN   100.8
+multiclass                  MLP        0.588            0.275             0.279        0.618            0.284             0.289              NaN    17.2
+
+Saved: results/results_summary.csv, reports/, confusion_matrices/, models/

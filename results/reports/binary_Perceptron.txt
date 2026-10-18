@@ -1,0 +1,10 @@
+binary / Perceptron  (stratified 80/20 hold-out, seed=42)
+
+              precision    recall  f1-score   support
+
+      Normal      0.819     0.819     0.819       160
+     Anomaly      0.821     0.821     0.821       162
+
+    accuracy                          0.820       322
+   macro avg      0.820     0.820     0.820       322
+weighted avg      0.820     0.820     0.820       322

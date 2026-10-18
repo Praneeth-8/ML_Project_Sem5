@@ -1,0 +1,10 @@
+binary / MLP  (stratified 80/20 hold-out, seed=42)
+
+              precision    recall  f1-score   support
+
+      Normal      0.794     0.844     0.818       160
+     Anomaly      0.836     0.784     0.809       162
+
+    accuracy                          0.814       322
+   macro avg      0.815     0.814     0.814       322
+weighted avg      0.815     0.814     0.814       322

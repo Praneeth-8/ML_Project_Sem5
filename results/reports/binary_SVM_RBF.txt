@@ -1,0 +1,10 @@
+binary / SVM_RBF  (stratified 80/20 hold-out, seed=42)
+
+              precision    recall  f1-score   support
+
+      Normal      0.844     0.881     0.862       160
+     Anomaly      0.877     0.840     0.858       162
+
+    accuracy                          0.860       322
+   macro avg      0.861     0.860     0.860       322
+weighted avg      0.861     0.860     0.860       322

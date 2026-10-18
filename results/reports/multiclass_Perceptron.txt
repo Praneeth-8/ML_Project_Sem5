@@ -1,0 +1,22 @@
+multiclass / Perceptron  (stratified 80/20 hold-out, seed=42)
+
+               precision    recall  f1-score   support
+
+        Abuse      0.308     0.400     0.348        10
+       Arrest      0.111     0.111     0.111         9
+        Arson      0.167     0.250     0.200         8
+      Assault      0.133     0.222     0.167         9
+     Burglary      0.208     0.278     0.238        18
+    Explosion      0.000     0.000     0.000         6
+     Fighting      0.111     0.111     0.111         9
+ NormalVideos      0.804     0.794     0.799       160
+RoadAccidents      0.360     0.360     0.360        25
+      Robbery      0.391     0.310     0.346        29
+     Shooting      0.000     0.000     0.000         5
+  Shoplifting      0.000     0.000     0.000         6
+     Stealing      0.333     0.368     0.350        19
+    Vandalism      0.000     0.000     0.000         9
+
+     accuracy                          0.519       322
+    macro avg      0.209     0.229     0.216       322
+ weighted avg      0.518     0.519     0.517       322

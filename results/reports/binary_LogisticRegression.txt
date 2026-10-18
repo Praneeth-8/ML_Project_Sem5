@@ -1,0 +1,10 @@
+binary / LogisticRegression  (stratified 80/20 hold-out, seed=42)
+
+              precision    recall  f1-score   support
+
+      Normal      0.825     0.825     0.825       160
+     Anomaly      0.827     0.827     0.827       162
+
+    accuracy                          0.826       322
+   macro avg      0.826     0.826     0.826       322
+weighted avg      0.826     0.826     0.826       322

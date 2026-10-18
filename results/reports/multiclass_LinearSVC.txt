@@ -1,0 +1,22 @@
+multiclass / LinearSVC  (stratified 80/20 hold-out, seed=42)
+
+               precision    recall  f1-score   support
+
+        Abuse      0.429     0.300     0.353        10
+       Arrest      0.125     0.111     0.118         9
+        Arson      0.500     0.375     0.429         8
+      Assault      0.143     0.222     0.174         9
+     Burglary      0.176     0.167     0.171        18
+    Explosion      0.667     0.333     0.444         6
+     Fighting      0.167     0.111     0.133         9
+ NormalVideos      0.795     0.850     0.822       160
+RoadAccidents      0.500     0.520     0.510        25
+      Robbery      0.438     0.483     0.459        29
+     Shooting      0.000     0.000     0.000         5
+  Shoplifting      0.000     0.000     0.000         6
+     Stealing      0.333     0.368     0.350        19
+    Vandalism      0.200     0.111     0.143         9
+
+     accuracy                          0.578       322
+    macro avg      0.319     0.282     0.293       322
+ weighted avg      0.559     0.578     0.565       322

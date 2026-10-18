@@ -1,0 +1,10 @@
+binary / HistGradientBoosting  (stratified 80/20 hold-out, seed=42)
+
+              precision    recall  f1-score   support
+
+      Normal      0.842     0.831     0.836       160
+     Anomaly      0.835     0.846     0.840       162
+
+    accuracy                          0.839       322
+   macro avg      0.839     0.838     0.838       322
+weighted avg      0.839     0.839     0.838       322

@@ -1,0 +1,10 @@
+binary / LinearSVC  (stratified 80/20 hold-out, seed=42)
+
+              precision    recall  f1-score   support
+
+      Normal      0.809     0.794     0.801       160
+     Anomaly      0.800     0.815     0.807       162
+
+    accuracy                          0.804       322
+   macro avg      0.804     0.804     0.804       322
+weighted avg      0.804     0.804     0.804       322

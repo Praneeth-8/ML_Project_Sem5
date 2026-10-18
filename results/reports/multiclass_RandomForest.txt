@@ -1,0 +1,22 @@
+multiclass / RandomForest  (stratified 80/20 hold-out, seed=42)
+
+               precision    recall  f1-score   support
+
+        Abuse      1.000     0.100     0.182        10
+       Arrest      0.000     0.000     0.000         9
+        Arson      1.000     0.250     0.400         8
+      Assault      0.000     0.000     0.000         9
+     Burglary      0.000     0.000     0.000        18
+    Explosion      0.000     0.000     0.000         6
+     Fighting      0.000     0.000     0.000         9
+ NormalVideos      0.510     1.000     0.675       160
+RoadAccidents      0.000     0.000     0.000        25
+      Robbery      0.000     0.000     0.000        29
+     Shooting      0.000     0.000     0.000         5
+  Shoplifting      0.000     0.000     0.000         6
+     Stealing      0.600     0.158     0.250        19
+    Vandalism      0.000     0.000     0.000         9
+
+     accuracy                          0.516       322
+    macro avg      0.222     0.108     0.108       322
+ weighted avg      0.344     0.516     0.366       322

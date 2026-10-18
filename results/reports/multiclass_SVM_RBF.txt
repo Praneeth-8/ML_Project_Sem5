@@ -1,0 +1,22 @@
+multiclass / SVM_RBF  (stratified 80/20 hold-out, seed=42)
+
+               precision    recall  f1-score   support
+
+        Abuse      1.000     0.300     0.462        10
+       Arrest      0.500     0.111     0.182         9
+        Arson      0.444     0.500     0.471         8
+      Assault      0.250     0.111     0.154         9
+     Burglary      0.222     0.111     0.148        18
+    Explosion      0.000     0.000     0.000         6
+     Fighting      0.000     0.000     0.000         9
+ NormalVideos      0.711     0.938     0.809       160
+RoadAccidents      0.448     0.520     0.481        25
+      Robbery      0.500     0.483     0.491        29
+     Shooting      0.000     0.000     0.000         5
+  Shoplifting      0.000     0.000     0.000         6
+     Stealing      0.400     0.526     0.455        19
+    Vandalism      0.500     0.111     0.182         9
+
+     accuracy                          0.618       322
+    macro avg      0.355     0.265     0.274       322
+ weighted avg      0.546     0.618     0.559       322

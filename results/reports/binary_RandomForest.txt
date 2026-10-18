@@ -1,0 +1,10 @@
+binary / RandomForest  (stratified 80/20 hold-out, seed=42)
+
+              precision    recall  f1-score   support
+
+      Normal      0.789     0.844     0.816       160
+     Anomaly      0.834     0.778     0.805       162
+
+    accuracy                          0.811       322
+   macro avg      0.812     0.811     0.810       322
+weighted avg      0.812     0.811     0.810       322

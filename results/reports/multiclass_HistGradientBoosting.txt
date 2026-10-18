@@ -1,0 +1,22 @@
+multiclass / HistGradientBoosting  (stratified 80/20 hold-out, seed=42)
+
+               precision    recall  f1-score   support
+
+        Abuse      0.667     0.200     0.308        10
+       Arrest      0.250     0.333     0.286         9
+        Arson      0.375     0.375     0.375         8
+      Assault      0.333     0.111     0.167         9
+     Burglary      0.357     0.278     0.312        18
+    Explosion      0.000     0.000     0.000         6
+     Fighting      0.500     0.111     0.182         9
+ NormalVideos      0.719     0.894     0.797       160
+RoadAccidents      0.400     0.400     0.400        25
+      Robbery      0.565     0.448     0.500        29
+     Shooting      0.000     0.000     0.000         5
+  Shoplifting      1.000     0.333     0.500         6
+     Stealing      0.476     0.526     0.500        19
+    Vandalism      0.143     0.111     0.125         9
+
+     accuracy                          0.602       322
+    macro avg      0.413     0.294     0.318       322
+ weighted avg      0.570     0.602     0.568       322
