@@ -1,0 +1,37 @@
+[youtube] Extracting URL: https://youtube.com/shorts/9emhnxU2_LA?si=P8A2p_sFoKXOXwnz
+[youtube] 9emhnxU2_LA: Downloading webpage
+WARNING: [youtube] No supported JavaScript runtime could be found. Only deno is enabled by default; to use another runtime add  --js-runtimes RUNTIME[:PATH]  to your command/config. YouTube extraction without a JS runtime has been deprecated, and some formats may be missing. See  https://github.com/yt-dlp/yt-dlp/wiki/EJS  for details on installing one
+[youtube] 9emhnxU2_LA: Downloading visionos player API JSON
+[youtube] 9emhnxU2_LA: Downloading m3u8 information
+[info] 9emhnxU2_LA: Downloading 1 format(s): 396
+[download] Destination: robber.mp4
+[download]   0.2% of  445.88KiB at  239.74KiB/s ETA 00:01[download]   0.7% of  445.88KiB at  656.21KiB/s ETA 00:00[download]   1.6% of  445.88KiB at    1.44MiB/s ETA 00:00[download]   3.4% of  445.88KiB at    2.99MiB/s ETA 00:00[download]   7.0% of  445.88KiB at    2.64MiB/s ETA 00:00[download]  14.1% of  445.88KiB at    1.29MiB/s ETA 00:00[download]  28.5% of  445.88KiB at    1.29MiB/s ETA 00:00[download]  57.2% of  445.88KiB at    1.73MiB/s ETA 00:00[download] 100.0% of  445.88KiB at    2.39MiB/s ETA 00:00[download] 100% of  445.88KiB in 00:00:00 at 1.05MiB/s   
+Device: cpu
+Video: robber.mp4
+  fps=30.0  frames=450  duration=15.0s
+  sampled 45 frames (every 10th, resized to 64x64)
+  frame features: (45, 1024)
+
+--------------------------------------------------------------
+WHOLE VIDEO  (0.0s - 14.7s)
+--------------------------------------------------------------
+[binary]
+   HistGradientBoosting   -> Anomaly        (conf 0.89)
+   LinearSVC              -> Anomaly        (conf   - )
+   LogisticRegression     -> Anomaly        (conf 0.97)
+   MLP                    -> Anomaly        (conf 1.00)
+   Perceptron             -> Anomaly        (conf   - )
+   RandomForest           -> Anomaly        (conf 0.69)
+   SVM_RBF                -> Anomaly        (conf 0.92)
+   MAJORITY VOTE          -> Anomaly  (7/7 models)
+[multiclass]
+   HistGradientBoosting   -> Stealing       (conf 0.17)
+   LinearSVC              -> Robbery        (conf   - )
+   LogisticRegression     -> Burglary       (conf 0.71)
+   MLP                    -> Burglary       (conf 0.61)
+   Perceptron             -> Robbery        (conf   - )
+   RandomForest           -> NormalVideos   (conf 0.39)
+   SVM_RBF                -> NormalVideos   (conf 0.16)
+   MAJORITY VOTE          -> Robbery  (2/7 models)
+  window    0.0-  10.0s : Anomaly  (7/7)  | NormalVideos (2/7)
+  window   10.0-  20.0s : Anomaly  (7/7)  | NormalVideos (2/7)

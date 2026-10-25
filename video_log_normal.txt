@@ -1,0 +1,37 @@
+[youtube] Extracting URL: https://youtu.be/1gi5qn1khVk?si=YpU7sfQ_Oc_06biE
+[youtube] 1gi5qn1khVk: Downloading webpage
+WARNING: [youtube] No supported JavaScript runtime could be found. Only deno is enabled by default; to use another runtime add  --js-runtimes RUNTIME[:PATH]  to your command/config. YouTube extraction without a JS runtime has been deprecated, and some formats may be missing. See  https://github.com/yt-dlp/yt-dlp/wiki/EJS  for details on installing one
+[youtube] 1gi5qn1khVk: Downloading visionos player API JSON
+[youtube] 1gi5qn1khVk: Downloading m3u8 information
+[info] 1gi5qn1khVk: Downloading 1 format(s): 398
+[download] Destination: normal.mp4
+[download]   0.0% of    2.24MiB at  201.91KiB/s ETA 00:11[download]   0.1% of    2.24MiB at  558.00KiB/s ETA 00:04[download]   0.3% of    2.24MiB at    1.23MiB/s ETA 00:01[download]   0.7% of    2.24MiB at    2.56MiB/s ETA 00:00[download]   1.4% of    2.24MiB at    4.33MiB/s ETA 00:00[download]   2.8% of    2.24MiB at    1.28MiB/s ETA 00:01[download]   5.5% of    2.24MiB at    1.37MiB/s ETA 00:01[download]  11.1% of    2.24MiB at    1.85MiB/s ETA 00:01[download]  22.3% of    2.24MiB at    2.71MiB/s ETA 00:00[download]  44.7% of    2.24MiB at    4.06MiB/s ETA 00:00[download]  89.4% of    2.24MiB at    6.71MiB/s ETA 00:00[download] 100.0% of    2.24MiB at    7.34MiB/s ETA 00:00[download] 100% of    2.24MiB in 00:00:00 at 2.93MiB/s   
+Device: cpu
+Video: normal.mp4
+  fps=25.0  frames=376  duration=15.0s
+  sampled 38 frames (every 10th, resized to 64x64)
+  frame features: (38, 1024)
+
+--------------------------------------------------------------
+WHOLE VIDEO  (0.0s - 14.8s)
+--------------------------------------------------------------
+[binary]
+   HistGradientBoosting   -> Normal         (conf 0.98)
+   LinearSVC              -> Normal         (conf   - )
+   LogisticRegression     -> Normal         (conf 1.00)
+   MLP                    -> Normal         (conf 0.98)
+   Perceptron             -> Normal         (conf   - )
+   RandomForest           -> Normal         (conf 0.67)
+   SVM_RBF                -> Normal         (conf 0.92)
+   MAJORITY VOTE          -> Normal  (7/7 models)
+[multiclass]
+   HistGradientBoosting   -> NormalVideos   (conf 0.83)
+   LinearSVC              -> NormalVideos   (conf   - )
+   LogisticRegression     -> NormalVideos   (conf 0.99)
+   MLP                    -> NormalVideos   (conf 1.00)
+   Perceptron             -> NormalVideos   (conf   - )
+   RandomForest           -> NormalVideos   (conf 0.64)
+   SVM_RBF                -> NormalVideos   (conf 0.86)
+   MAJORITY VOTE          -> NormalVideos  (7/7 models)
+  window    0.0-  10.0s : Normal   (7/7)  | NormalVideos (7/7)
+  window   10.0-  20.0s : Normal   (7/7)  | NormalVideos (7/7)
