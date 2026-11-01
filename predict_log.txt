@@ -1,0 +1,23 @@
+[1/10] downloading https://youtube.com/shorts/UC-EKo5MNDs?si=Rq3m2ylQyzWmqTdE
+[2/10] downloading https://youtube.com/shorts/wbqOTUWNmbc?si=apA1K1rSVtw6tzO9
+[3/10] downloading https://youtube.com/shorts/Unch9fj4D18?si=TWNhmNHlwH6Hw4rL
+[4/10] downloading https://youtube.com/shorts/om9ga_OXuv0?si=XEXejHk1hz2IG_xw
+[5/10] downloading https://youtube.com/shorts/DCnoyfjB4EM?si=BEu7pN4Wjao8Eevi
+[6/10] downloading https://youtube.com/shorts/zT5JozFyWnQ?si=-hLjIIb8a6MBmcpD
+[7/10] downloading https://youtu.be/DBl7MmHlQK0?si=cn3cWUUuVWhOid_J
+[8/10] downloading https://youtu.be/Gr0HpDM8Ki8?si=HYTmYMlnHa9TaVgJ
+[9/10] downloading https://youtu.be/-1bRhYjw1qE?si=J_infviy_e_CjDvc
+[10/10] downloading https://youtu.be/O7iV4kO8z6I?si=mMqO1OIjrdaAn-PX
+abnormal_01.mp4              P(normal)=0.162   P(abnormal)=0.838   -> abnormal   (true: abnormal)
+abnormal_02.mp4              P(normal)=0.101   P(abnormal)=0.899   -> abnormal   (true: abnormal)
+abnormal_03.mp4              P(normal)=0.268   P(abnormal)=0.732   -> abnormal   (true: abnormal)
+abnormal_04.mp4              P(normal)=0.426   P(abnormal)=0.574   -> abnormal   (true: abnormal)
+abnormal_05.mp4              P(normal)=0.088   P(abnormal)=0.912   -> abnormal   (true: abnormal)
+normal_06.mp4                P(normal)=0.596   P(abnormal)=0.404   -> normal   (true: normal)
+normal_07.mp4                P(normal)=0.937   P(abnormal)=0.063   -> normal   (true: normal)
+normal_08.mp4                P(normal)=0.697   P(abnormal)=0.303   -> normal   (true: normal)
+normal_09.mp4                P(normal)=0.858   P(abnormal)=0.142   -> normal   (true: normal)
+normal_10.mp4                P(normal)=0.934   P(abnormal)=0.066   -> normal   (true: normal)
+
+Accuracy on labelled videos: 10/10 = 100%
+Saved predictions.csv

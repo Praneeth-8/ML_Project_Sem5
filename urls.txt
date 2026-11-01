@@ -1,0 +1,15 @@
+# One line per video:  label  link      (label = normal or abnormal)
+# - Use videos that are NOT from the UCF-Crime dataset.
+# - Short clips (about 30 s) of CCTV-style footage work best. Only the first 30 s are used.
+# - The label is optional, but with it the script prints the accuracy at the end.
+# - Lines starting with # are ignored.
+abnormal https://youtube.com/shorts/UC-EKo5MNDs?si=Rq3m2ylQyzWmqTdE
+abnormal https://youtube.com/shorts/wbqOTUWNmbc?si=apA1K1rSVtw6tzO9
+abnormal https://youtube.com/shorts/Unch9fj4D18?si=TWNhmNHlwH6Hw4rL
+abnormal https://youtube.com/shorts/om9ga_OXuv0?si=XEXejHk1hz2IG_xw
+abnormal https://youtube.com/shorts/DCnoyfjB4EM?si=BEu7pN4Wjao8Eevi
+normal https://youtube.com/shorts/zT5JozFyWnQ?si=-hLjIIb8a6MBmcpD
+normal https://youtu.be/DBl7MmHlQK0?si=cn3cWUUuVWhOid_J
+normal https://youtu.be/Gr0HpDM8Ki8?si=HYTmYMlnHa9TaVgJ
+normal https://youtu.be/-1bRhYjw1qE?si=J_infviy_e_CjDvc
+normal https://youtu.be/O7iV4kO8z6I?si=mMqO1OIjrdaAn-PX
